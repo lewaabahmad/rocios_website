@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class PostsControllerTest < ActionController::TestCase
-  get :index
-  assert_response :success
+  test 'should get articles index' do
+    get :index
+    assert_response :success
+  end
 end
