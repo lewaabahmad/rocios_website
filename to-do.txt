@@ -1,0 +1,13 @@
+WEB MAP:
+  static pages
+    about
+    splash page
+
+  dynamic pages
+    news/blog
+    store
+
+=================================================
+
+TO DO: 
+  
