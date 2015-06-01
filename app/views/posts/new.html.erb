@@ -1,0 +1,14 @@
+<h2>New Post:</h2>
+
+<%= form_for Post.new do |f| %>
+    <%= f.label :title, "Title:" %>
+    <%= f.text_field :title, class: "form-control" %>
+
+    <%= f.label :title, "Tagline:" %>
+    <%= f.text_field :tagline, class: "form-control" %>
+
+    <%= f.label :title, "Body:" %>
+    <%= f.text_area :body, class: "form-control"  %>
+
+    <%= f.submit "Publish", class: "btn btn-primary" %>
+<% end %>

@@ -1,0 +1,11 @@
+<h2><%= @post.title %></h2>
+<h6><%= @post.created_at %></h6>
+<h3><%= @post.tagline %></h3>
+
+<%= button_to "Edit", edit_post_path, :class => "button", :method => :get  %>
+<%= form_for @post, method: :delete do |f| %>
+  <%= f.hidden_field :post_id, value: @post.id %>
+  <%= f.submit "Delete", :id => "delete_post" %>
+<% end %>
+
+<p><%= @post.body %></p>

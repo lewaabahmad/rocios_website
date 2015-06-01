@@ -1,0 +1,12 @@
+<%= form_for @post do |f| %>
+    <%= f.label :title, "Title:" %>
+    <%= f.text_field :title, :value => @post.title, class: "form-control" %>
+
+    <%= f.label :title, "Tagline:" %>
+    <%= f.text_field :tagline, :value => @post.tagline, class: "form-control" %>
+
+    <%= f.label :title, "Body:" %>
+    <%= f.text_area :body, :value => @post.body, class: "form-control"  %>
+
+    <%= f.submit "Update", class: "btn btn-primary" %>
+<% end %>
