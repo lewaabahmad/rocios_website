@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20150601014036) do
 
-<<<<<<< HEAD
-  create_table "posts", force: :cascade do |t|
-=======
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,7 +20,6 @@ ActiveRecord::Schema.define(version: 20150601014036) do
     t.string   "title"
     t.string   "tagline"
     t.text     "body"
->>>>>>> 4592588622ed67244b55c52532cd755d2276bbe8
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
