@@ -1,7 +1,9 @@
 require 'test_helper'
 
 class PostTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  def setup
+    @valid_post = Post.new
+    @invalid_post_one = Post.new
+    @invalid_post_two
+  end
 end
