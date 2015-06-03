@@ -3,5 +3,5 @@
 <% @posts.each do |post| %>
   <h2><%= post.title %></h2>
   <h3><%= post.tagline %></h3>
-  <p><%= post.body %></p>
+  <p><%= raw post.body.gsub(/\n/, '<br/>') %></p>
 <% end %>

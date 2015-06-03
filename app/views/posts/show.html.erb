@@ -8,4 +8,4 @@
   <%= f.submit "Delete", :id => "delete_post" %>
 <% end %>
 
-<p><%= @post.body %></p>
+<p><%= raw @post.body.gsub(/\n/, '<br/>') %></p>
