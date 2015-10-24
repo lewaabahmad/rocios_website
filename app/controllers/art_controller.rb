@@ -16,6 +16,6 @@ class ArtController < ApplicationController
   end
 
   def show
-    @art_piece = Art.find(params[:id])
+    @piece = Art.find(params[:id])
   end
 end

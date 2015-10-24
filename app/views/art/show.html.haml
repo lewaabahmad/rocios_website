@@ -1,0 +1,13 @@
+#art-show-card
+  %h3
+    = @piece.title
+  %h4
+    = @piece.tagline
+  %p
+    = @piece.description
+  - if @piece.limited
+    %h5.limited
+      limited
+  %h5.cost
+    = @piece.price
+  %img{src: @piece.image_url }

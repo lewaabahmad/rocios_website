@@ -1,0 +1,20 @@
+//can i do this without iterating? 
+
+#art-container
+  - @art.each.with_index do |piece, i|
+    .art-piece.col-lg-4.col-md-6.col-xs-12
+      .flipper
+        .front
+          %img{src: piece.image_url}
+        .back
+          %h3
+            = piece.title
+          %h4
+            = piece.tagline
+          %p
+            = piece.description
+          - if piece.limited
+            %h5.limited
+              limited
+          %h5.cost
+            = piece.price

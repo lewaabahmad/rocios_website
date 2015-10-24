@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   resources :posts
 
   root to: "static_pages#index"
-  
+  get '/about', to: 'static_pages#about'
 
 end
