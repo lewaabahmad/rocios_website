@@ -1,19 +1,25 @@
-// document.addEventListener("DOMContentLoaded", function(event) {
-//   (function() {
-
-//   })()
-// });
-
 // <![CDATA[
-var colour="#ff00f0";
-var sparkles=500;
+var colour="#a800ff";
+// colors = [ "#B0171F", //indian red
+//            "#DC143C", //crimson
+//            "#FF1493", //deep pink
+//            "#8B008B",  //magenta
+//            "#00EE00",  //green
+//            "#FFFF00", //yellow
+//            "#FFA500", //orange
+//            "#00E5EE", //turqoise
+//            "#009ACD",
+//            "#2E8B57",
+//            "#FFC125"
+//            ]
+// window.setInterval(function() {
+//   var i = Math.floor((Math.random() * 4));
+//   colour = colors[i];
+//   console.log(colour)
+// }, 100);
 
-/****************************
-*  Tinkerbell Magic Sparkle *
-* (c) 2005 mf2fm web-design *
-*  http://www.mf2fm.com/rv  *
-* DON'T EDIT BELOW THIS BOX *
-****************************/
+var sparkles=120;
+
 var x=ox=400;
 var y=oy=300;
 var swide=800;
@@ -28,7 +34,10 @@ var tinyx=new Array();
 var tinyy=new Array();
 var tinyv=new Array();
 
-window.onload=function() { if (document.getElementById) {
+// $(document).ready(ready);
+// $(document).on('page:load', ready);
+// var ready =
+window.onload = function() { if (document.getElementById) {
   var i, rats, rlef, rdow;
   for (var i=0; i<sparkles; i++) {
     var rats=createDiv(3, 3);
@@ -172,4 +181,3 @@ function createDiv(height, width) {
   div.style.backgroundColor=colour;
   return (div);
 }
-// ]]>
