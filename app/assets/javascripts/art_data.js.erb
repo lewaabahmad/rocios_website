@@ -1,0 +1,29 @@
+(function() {
+  var artData = {};
+  <% Art.all.each.with_index do |a, i| %>
+    artData[<%= i %>] = {
+      title: "<%= a.title %>",
+      tagline: "<%= a.tagline %>",
+      description: "<%= a.description %>",
+      limited: "<%= a.limited %>",
+      quantity: "<%= a.quantity %>",
+      price: "<%= a.price %>",
+      image_url: "<%= a.image_url %>",
+      created_at: "<%= a.created_at %>",
+      updated_at: "<%= a.updated_at %>"
+    };
+  <% end %>
+
+  if (localStorage.getItem('cart') === null) {
+    var limit = <%= Art.all.length %>;
+    var emptyCart = "{";
+    for (var i = 0; i < limit; i++) {
+      emptyCart += '"' + i + '"' + ": false";
+      if (i != limit - 1) {
+        emptyCart += ",";
+      }
+    }
+    emptyCart += "}";
+    localStorage.setItem('cart', emptyCart);
+  }
+})()

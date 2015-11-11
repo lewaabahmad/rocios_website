@@ -1,0 +1,35 @@
+nav {
+  text-align:center;
+      padding: 75px 0 40px 0px;
+    border-bottom: 5px solid pink;
+}
+nav ul {
+  margin: 0 auto;
+  padding: 0;
+  width: 516px;
+}
+nav li {
+  display: inline-block;
+  list-style: none;
+  text-align: center;
+  width: 100px;
+}
+.nav-left {
+  float: right;
+  text-align: right;
+  /*margin-right: 30px;*/
+}
+.nav-left a {
+  float: right;
+}
+#center-nav {
+  text-align: center;
+}
+.nav-right {
+  float: left;
+  /*margin-left: 30px;*/
+  text-align: left;
+}
+.nav-left a {
+  float: right;
+}
