@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   root to: "static_pages#index"
   get '/about', to: 'static_pages#about'
+  get '/cart', to: 'static_pages#cart'
+  get '/contact', to: 'static_pages#contact'
   get 'purchase/new', to: 'purchase#new'
   post 'purchase', to: 'purchase#create'
 

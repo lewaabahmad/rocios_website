@@ -1,7 +1,13 @@
-(function() {
+
+var Rocio = {}
+Rocio.art = (function() {
   var artData = {};
+  var artCount = 0;
+  var artTitles = []
+
   <% Art.all.each.with_index do |a, i| %>
-    artData[<%= i %>] = {
+    artData["<%= a.title %>"] = {
+      // indx: "<%= i %>", WHY DOES THIS BUG THE FUCK OUT???????????????
       title: "<%= a.title %>",
       tagline: "<%= a.tagline %>",
       description: "<%= a.description %>",
@@ -12,18 +18,86 @@
       created_at: "<%= a.created_at %>",
       updated_at: "<%= a.updated_at %>"
     };
+    artTitles.push("<%= a.title %>")
+    artCount++;
   <% end %>
 
-  if (localStorage.getItem('cart') === null) {
-    var limit = <%= Art.all.length %>;
+  var limit = <%= Art.all.length %>;
+  if (artCount !== limit) console.alert("Warning: something is wrong with the art data.")
+
+//==================================================
+
+  function generateEmptyCart() {
     var emptyCart = "{";
     for (var i = 0; i < limit; i++) {
-      emptyCart += '"' + i + '"' + ": false";
+      emptyCart += '"' + artTitles[i] + '"' + ": false";
       if (i != limit - 1) {
         emptyCart += ",";
       }
     }
     emptyCart += "}";
-    localStorage.setItem('cart', emptyCart);
+    return emptyCart;
   }
-})()
+
+  function aPieceHasNotBeenFound(index) {
+    artData[artTitles[index]] === undefined
+  }
+
+  function cartInvalid(limit, artTitles) {
+    // piece not found
+    // debugger
+    for (var i = 0; i < limit; i++) {
+      if (aPieceHasNotBeenFound(i)) {
+        return true;
+      }
+    }
+    // item added or removed
+    if (localStorage.getItem('cart') !== null) {
+      if (localStorage.getItem('cart').split(",").length !== artCount) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  if (localStorage.getItem('cart') === null) {
+    var emptyCart = generateEmptyCart();
+    localStorage.setItem('cart', emptyCart);    
+  }
+
+  if (cartInvalid(limit, artTitles)) {
+    var emptyCart = generateEmptyCart();
+    var currentCart = JSON.parse(localStorage.getItem('cart'));
+    debugger
+      cartInvalid(limit, artTitles)
+    for (var i = 0; i < limit; i++) {
+      if (currentCart[artTitles[i]] === true && emptyCart[artTitles[i]] === false) {
+        //same problem here
+        emptyCart[artTitles[i]] = true;
+      }
+    }
+    localStorage.clear()
+    localStorage.setItem('cart', emptyCart);
+  } 
+
+  return artData
+})();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

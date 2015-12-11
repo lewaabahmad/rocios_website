@@ -1,0 +1,16 @@
+#art-piece-in-cart-null {
+  display: none;
+}
+.cart-item {
+  border: 3px solid black;
+  position: relative;
+}
+.cart-item img {
+  width: 100%;
+}
+.cart-item .remove-item {
+  position: absolute;
+  font-size: 24px;
+  right: 0;
+  z-index: 10;
+}

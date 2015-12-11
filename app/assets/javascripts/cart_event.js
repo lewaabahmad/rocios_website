@@ -12,16 +12,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
 
     function updateCartIcon() {
-      document.getElementById("cart").innerHTML = "cart - " + getCartCount();
+      document.getElementById("cart-nav").innerHTML = "cart - " + getCartCount();
     }
     updateCartIcon()
 
+    //Fix this function!!!!!!!!!!
     var addToCartButtons = document.getElementsByClassName("add-to-cart");
     for (var i = 0; i < addToCartButtons.length; i++) {
       addToCartButtons[i].addEventListener("click", function(event) {
         var cart = JSON.parse(localStorage.getItem('cart'))
-        var itemIndex = Number(event.target.parentElement.dataset.index)
-        cart[itemIndex] = true;
+        var item = event.target.parentElement.dataset.title
+        cart[item] = true;
         localStorage.setItem('cart', JSON.stringify(cart))
         updateCartIcon();
       })
