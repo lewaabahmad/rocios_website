@@ -15,8 +15,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
       document.getElementById("cart-nav").innerHTML = "cart - " + getCartCount();
     }
     updateCartIcon()
-
-    //Fix this function!!!!!!!!!!
+    
     var addToCartButtons = document.getElementsByClassName("add-to-cart");
     for (var i = 0; i < addToCartButtons.length; i++) {
       addToCartButtons[i].addEventListener("click", function(event) {

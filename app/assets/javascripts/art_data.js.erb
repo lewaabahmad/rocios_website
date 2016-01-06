@@ -1,4 +1,3 @@
-
 var Rocio = {}
 Rocio.art = (function() {
   var artData = {};
@@ -7,7 +6,7 @@ Rocio.art = (function() {
 
   <% Art.all.each.with_index do |a, i| %>
     artData["<%= a.title %>"] = {
-      // indx: "<%= i %>", WHY DOES THIS BUG THE FUCK OUT???????????????
+      // indx: "<%= i %>", WHY DOES THIS BUG THE FUCK OUT?????????
       title: "<%= a.title %>",
       tagline: "<%= a.tagline %>",
       description: "<%= a.description %>",
@@ -25,79 +24,5 @@ Rocio.art = (function() {
   var limit = <%= Art.all.length %>;
   if (artCount !== limit) console.alert("Warning: something is wrong with the art data.")
 
-//==================================================
-
-  function generateEmptyCart() {
-    var emptyCart = "{";
-    for (var i = 0; i < limit; i++) {
-      emptyCart += '"' + artTitles[i] + '"' + ": false";
-      if (i != limit - 1) {
-        emptyCart += ",";
-      }
-    }
-    emptyCart += "}";
-    return emptyCart;
-  }
-
-  function aPieceHasNotBeenFound(index) {
-    artData[artTitles[index]] === undefined
-  }
-
-  function cartInvalid(limit, artTitles) {
-    // piece not found
-    // debugger
-    for (var i = 0; i < limit; i++) {
-      if (aPieceHasNotBeenFound(i)) {
-        return true;
-      }
-    }
-    // item added or removed
-    if (localStorage.getItem('cart') !== null) {
-      if (localStorage.getItem('cart').split(",").length !== artCount) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  if (localStorage.getItem('cart') === null) {
-    var emptyCart = generateEmptyCart();
-    localStorage.setItem('cart', emptyCart);    
-  }
-
-  if (cartInvalid(limit, artTitles)) {
-    var emptyCart = generateEmptyCart();
-    var currentCart = JSON.parse(localStorage.getItem('cart'));
-    debugger
-      cartInvalid(limit, artTitles)
-    for (var i = 0; i < limit; i++) {
-      if (currentCart[artTitles[i]] === true && emptyCart[artTitles[i]] === false) {
-        //same problem here
-        emptyCart[artTitles[i]] = true;
-      }
-    }
-    localStorage.clear()
-    localStorage.setItem('cart', emptyCart);
-  } 
-
-  return artData
+  return artData;
 })();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

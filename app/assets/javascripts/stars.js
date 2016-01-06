@@ -18,7 +18,7 @@ var colour="#a800ff";
 //   console.log(colour)
 // }, 100);
 
-var sparkles=120;
+var sparkles=500;
 
 var x=ox=400;
 var y=oy=300;
