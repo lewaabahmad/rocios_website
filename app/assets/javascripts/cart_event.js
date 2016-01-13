@@ -1,21 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(event) {
-  (function(){
-    function getCartCount() {
-      var count = 0;
-      var cart = JSON.parse(localStorage.getItem('cart'));
-      for (key in cart) {
-        if (cart[key] == true) {
-          count++;
-        }
-      }
-      return count;
-    }
-
-    function updateCartIcon() {
-      document.getElementById("cart-nav").innerHTML = "cart - " + getCartCount();
-    }
-    updateCartIcon()
-    
+  (function(){    
     var addToCartButtons = document.getElementsByClassName("add-to-cart");
     for (var i = 0; i < addToCartButtons.length; i++) {
       addToCartButtons[i].addEventListener("click", function(event) {

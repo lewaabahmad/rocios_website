@@ -1,11 +1,11 @@
 Rocio.cart = (function() {
 
   return {
-// REDUNDANT
     initialize: function() {
       if (localStorage.getItem('cart') === null) {
         localStorage.setItem('cart', JSON.stringify([]));
       }
+      this.updateCartIcon()
     },
 
     get: function() {
@@ -18,25 +18,33 @@ Rocio.cart = (function() {
 
     removeItem: function(item) {
       var cart = this.get();
-      //FLUSH OUT THIS FUNCTIONALITY
-      cart[item.id] = false;
+      debugger
+      //this will need to rmeove the item from the array of 
       localStorage.setItem('cart', JSON.stringify(cart));
+    },
+
+    getArtTitles: function() {
+      var artPieces = [];
+      for (title in Rocio.art) {
+        artPieces.push(title);
+      }
+      return artPieces
     },
 
     sanitizeCart: function() {
       var cart = this.get();
-      for (var piece in cart) {
-        debugger
-        if (cart.indexOf(piece) === -1) {
-          debugger
+      var artTitles = this.getArtTitles();
+      for (var cartPiece in cart) {
+        if (artTitles.indexOf(cartPiece) === -1) {
+          cart = cart.splice(cart.indexOf(cartPiece) , 1);
         }
       }
+      this.set(cart);
     },
 
     add: function(piece) {
       var cart = this.get();
       cart.push(piece);
-      debugger
       this.set(cart);
     },
 
@@ -47,6 +55,14 @@ Rocio.cart = (function() {
         cart.splice(pieceIndex, 1);
         this.set(cart);
       }
+    },
+
+    length: function() {
+      return this.get().length;
+    },
+
+    updateCartIcon: function() {
+      document.getElementById("cart-nav").innerHTML = "cart - " + this.length();
     }
   }
 })()
