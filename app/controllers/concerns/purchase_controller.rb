@@ -1,6 +1,8 @@
 class PurchaseController < ApplicationController
+
   def new
     @purchase = Purchase.new
+    render :layout => false
   end
 
   def create

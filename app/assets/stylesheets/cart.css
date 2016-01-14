@@ -15,14 +15,17 @@
   right: 0;
   z-index: 10;
 }
-#cart-actions {
-  text-align: left;
-}
 #total-cost-title {
   color: gray;
   font-size: 12px;
+  width: 100%;
 }
 #total-cost {
   color: black;
   font-size: 24px;
+  text-align: center;
+  width: 100%;
+}
+#checkout-btn {
+  width: 100%;
 }

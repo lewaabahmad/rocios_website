@@ -18,9 +18,9 @@
     %btn.remove-item
       %span.glyphicon.glyphicon-remove
     .row
-      .col-lg-3.col-md-3.col-sm-3
+      .col-sm-3.col-xs-6
         %img{alt: "art image"}
-      .col-lg-9.col-md-9.col-sm-9
+      .col-sm-9.col-xs-6
         %h3.art-title
           art title
         %h3.art-price
@@ -29,5 +29,18 @@
   %p#total-cost-title
     Your total cost:
   %p#total-cost
-  %button.btn.btn-primary.btn-lg{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button"}
+  %button#checkout-btn.btn.btn-primary.btn-lg{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button"}
     Checkout
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="HNN6NVXCXACFS">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+
+/ %form{:action => "https://www.paypal.com/cgi-bin/webscr", :method => "post", :target => "_top"}
+/ %input{:name => "cmd", :type => "hidden", :value => "_s-xclick"}
+/   %input{:name => "hosted_button_id", :type => "hidden", :value => "HNN6NVXCXACFS"}
+/     %input{:alt => "PayPal - The safer, easier way to pay online!", :border => "0", :name => "submit", :src => "https://www.paypalobjects.com/en_US/i/btn/btn_buynow_SM.gif", :type => "image"}
+/       %img{:alt => "", :border => "0", :height => "1", :src => "https://www.paypalobjects.com/en_US/i/scr/pixel.gif", :width => "1"}
