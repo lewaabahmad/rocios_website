@@ -2,7 +2,8 @@
   display: none;
 }
 .cart-item {
-  border: 3px solid black;
+  border-top: 1px solid #DDD;
+  padding: 20px 0 20px 0;
   position: relative;
 }
 .cart-item img {
@@ -13,4 +14,15 @@
   font-size: 24px;
   right: 0;
   z-index: 10;
+}
+#cart-actions {
+  text-align: left;
+}
+#total-cost-title {
+  color: gray;
+  font-size: 12px;
+}
+#total-cost {
+  color: black;
+  font-size: 24px;
 }

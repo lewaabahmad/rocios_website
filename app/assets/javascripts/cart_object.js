@@ -53,7 +53,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
     //U
       add: function(piece) {
         var cart = this.get();
-        cart.push(piece);
+        if (cart.indexOf(piece) === -1) {
+          cart.push(piece);
+        }
         this.set(cart);
       },
 
@@ -107,8 +109,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
           addToCartButtons[i].addEventListener("click", function(event) {
             var title = this.parentNode.dataset.title;
             var cart = self.get();
-            cart.push(title)
-            self.set(cart)
+            self.add(title);
             self.updateCartIcon();
           })
         }
@@ -123,6 +124,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             self.remove(this.parentNode.id);
             this.parentNode.parentNode.removeChild(this.parentNode);
             self.exportCost();
+            self.updateCartIcon();
           })
         }
       },

@@ -13,7 +13,7 @@
         %button.btn.btn-primary{:type => "button"} Save changes
 %h1
   Cart
-#cart
+#cart.col-sm-9.col-xs-12
   #art-piece-in-cart-null
     %btn.remove-item
       %span.glyphicon.glyphicon-remove
@@ -25,8 +25,9 @@
           art title
         %h3.art-price
           $__
-#cart-actions
+#cart-actions.col-sm-3.col-xs-12
+  %p#total-cost-title
+    Your total cost:
   %p#total-cost
-  /%button#checkout.btn.btn-primary{:type => "button"} 
   %button.btn.btn-primary.btn-lg{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button"}
     Checkout
