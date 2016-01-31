@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   get '/about', to: 'static_pages#about'
   get '/cart', to: 'static_pages#cart'
   get '/contact', to: 'static_pages#contact'
-  get 'purchase/new', to: 'purchase#new'
-  post 'purchase', to: 'purchase#create'
+  get '/purchase/new', to: 'purchase#new'
+  post '/purchase', to: 'purchase#create'
 
 # POST       /admin/posts(.:format)                    admin/posts#create
 end

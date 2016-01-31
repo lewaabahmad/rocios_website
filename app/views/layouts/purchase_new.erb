@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% binding.pry %>
+  <meta charset="UTF-8">
+  <script src="">
+    document.addEventListener("DOMContentLoaded", function(event) {
+      debugger
+      document.addEventListener("#payment-form", function(event) {
+        var form = this;
+        var button = this.find
+
+        // .disabled = true;
+
+      });
+    })
+  </script>
+</head>
+<body>
+  <div class="container">
+    <%= yield %>
+  </div>
+</body>
+</html>
+
+<!--   // jQuery(function($) {
+  //   $('#payment-form').submit(function(event) {
+  //     var $form = $(this);
+  //     debugger
+  //     // Disable the submit button to prevent repeated clicks
+  //     $form.find('button').prop('disabled', true);
+
+  //     Stripe.card.createToken($form, stripeResponseHandler);
+
+  //     // Prevent the form from submitting with the default action
+  //     return false;
+  //   });
+  // }); -->

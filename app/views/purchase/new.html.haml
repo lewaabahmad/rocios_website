@@ -1,9 +1,38 @@
-=  form_for @purchase, url: {action: "create"}, html: {class: "purchase-form"} do |f|
-  = f.text_field:purchaser
-  = f.text_field:state 
-  = f.text_field:city
-  = f.text_field:address_line_1
-  = f.text_field:address_line_2
-  = f.text_field:apartment
-  = f.text_field:zip_code
-  =  f.submit "Create"
+%form#payment-form{:action => "/purchase", :method => "post"}
+  = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+  %div
+    %label{:for => "name"} Name:
+    %input#name{:type => "text"}
+  %div
+    %label{:for => "mail"} E-mail:
+    %input#mail{:type => "email"}
+  %div
+    %label{:for => "msg"} Street Address Line 1:
+    %input#msg
+  %div
+    %label{:for => "msg"} Street Address Line 2:
+    %input#msg
+  %div
+    %label{:for => "msg"} City:
+    %input#msg
+  %div
+    %label{:for => "msg"} State:
+    %input#msg
+  %div
+    %label{:for => "msg"} Zip Code:
+    %input#msg
+  %div
+    %label{:for => "msg"} Apartment:
+    %input#msg
+
+  %div
+    %label{:for => "msg"} Card Number:
+    %input#msg
+  %div
+    %label{:for => "msg"} CVC:
+    %input#msg
+  %div
+    %label{:for => "msg"} Expiration Date:
+    %input#msg
+
+  %button{:type => "submit"} Submit Payment
