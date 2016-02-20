@@ -9,7 +9,6 @@ validation_manager = (function() {
  //EVENT LISTENER ATTACHING
   function addValidationsEventListeners(form) {
     addFormInputEvents(form);
-    addFormSubmitEvent(form);
   }
 
   function addFormInputEvents(form) {
@@ -18,14 +17,25 @@ validation_manager = (function() {
     for (var i = 0; i < limit; i++) {
       if (inputFields[i].type !== "hidden") {
         $(inputFields[i]).on("keyup blur", function() {
-          validate(this);
+          return validate(this);
         })
       }
     }
   }
 
-  function addFormSubmitEvent() {
-  
+  function isValid() {
+    var form = document.getElementById('payment-form');
+    var inputFields = form.querySelectorAll("input");
+    var limit = inputFields.length;
+    var valid = true;
+    for (var i = 0; i < limit; i++) {
+      if (inputFields[i].type !== "hidden") {
+        if (!validate(inputFields[i])) {
+          valid = false;
+        }
+      }
+    }
+    return valid;
   }
 
 //VALIDATION CONTROLLER
@@ -66,9 +76,10 @@ validation_manager = (function() {
         isValid = validateCreditCardExpirationDate(value);
         break;
       default:
-        return false;
+        return true;
     }
     isValid ? hideErrors(field) : showErrors(field);
+    return isValid;
   }
 
 //VALIDATORS
@@ -145,7 +156,8 @@ validation_manager = (function() {
   }
 
   return {
-    initialize: initialize
+    initialize: initialize,
+    isValid: isValid
   }
 })()
 

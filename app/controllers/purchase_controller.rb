@@ -6,7 +6,13 @@ class PurchaseController < ApplicationController
   end
 
   def create
-    # binding.pry
-    # Purchase.create(params[:purchase])
+    purchase_params
+    #Purchase.create(params[:purchase])
   end
+
+  private
+  def purchase_params
+    binding.pry
+    params.require(:purchase).permit()
+  end 
 end

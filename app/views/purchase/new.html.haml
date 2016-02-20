@@ -1,29 +1,31 @@
 %form#payment-form.validaterenater-form{:action => "/purchase", :method => "post"}
-  = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+  = tag(:input, type: "hidden", name: request_forgery_protection_token.to_s, value: form_authenticity_token)
+  %div
+    %p.payment-errors
   %div
     %label{:for => "name"} Name:
-    %input#name{type: "text", data: {validator: "full_name"}}
+    %input#name{type: "text", name: "name", data: {validator: "full_name"}}
   %div
     %label{:for => "mail"} E-mail:
-    %input#mail{:type => "email", data: {validator: "email"}}
+    %input#mail{type: "email", name: "email", data: {validator: "email"}}
   %div
     %label{:for => "msg"} Street Address Line 1:
-    %input#addOne{:type => "text", data: {validator: "street address"}}
+    %input#addOne{type: "text", name: "address_line_one", data: {validator: "street address"}}
   %div
     %label{:for => "msg"} Street Address Line 2:
-    %input#addTwo{:type => "text"}
+    %input#addTwo{type: "text", name: "address_line_two"}
   %div
     %label{:for => "msg"} City:
-    %input#city{:type => "text", data: {validator: "city"}}
+    %input#city{type: "text", name: "city", data: {validator: "city"}}
   %div
     %label{:for => "msg"} State:
-    %input#state{:type => "text", data: {validator: "state"}}
+    %input#state{type: "text", name: "state", data: {validator: "state"}}
   %div
     %label{:for => "msg"} Zip Code:
-    %input#zip{:type => "text", data: {validator: "zip_code"}}
+    %input#zip{:type => "text", name: "zip_code", data: {validator: "zip_code"}}
   %div
     %label{:for => "msg"} Apartment:
-    %input#apt{:type => "text", data: {validator: "apartment"}}
+    %input#apt{:type => "text", name: "apartment", data: {validator: "apartment"}}
   %div
     %label{:for => "msg"} Card Number:
     %input#cardNum{:type => "text", data: {validator: "credit_card_number"}}
@@ -33,6 +35,4 @@
   %div
     %label{:for => "msg"} Expiration Date:
     %input#exp{:type => "text", data: {validator: "credit_card_expiration_date"}}
-  %div
-    %input#stripe-token{type: "hidden", name: "stripeToken"}
   %button{:type => "submit"} Submit Payment
