@@ -6,6 +6,7 @@ validation_manager = (function() {
     }
   }
 
+ //EVENT LISTENER ATTACHING
   function addValidationsEventListeners(form) {
     addFormInputEvents(form);
     addFormSubmitEvent(form);
@@ -27,6 +28,7 @@ validation_manager = (function() {
   
   }
 
+//VALIDATION CONTROLLER
   function validate(field) {
     var validator = field.dataset.validator;
     var value = field.value;
@@ -39,15 +41,30 @@ validation_manager = (function() {
       case "email":
         isValid = validateEmail(value);
         break;
-      case "streetr_address":
+      case "street_address":
         isValid = validateAlphaNumeric(value);
         break;
       case "city":
-        isValid = false;
+        isValid = validateAlphabetic(value);
         break;
-      case "zip":
+      case "state":
+        isValid = validateAlphabetic(value);
+        break;
+      case "zip_code":
         isValid = validateZipCode(value);
-        breakl 
+        break; 
+      case "apartment":
+        isValid = validateAlphaNumeric(value);
+        break;
+      case "credit_card_number":
+        isValid = validateNumeric(value);
+        break;
+      case "credit_card_cvc":
+        isValid = validateNumeric(value);
+        break;
+      case "credit_card_expiration_date":
+        isValid = validateCreditCardExpirationDate(value);
+        break;
       default:
         return false;
     }
@@ -57,22 +74,37 @@ validation_manager = (function() {
 //VALIDATORS
   function validateFullName(fullNameValue) {
     var fullNameRegex = /^(.{1,50}\s+.{1,})/;
-    return validateWithRegex(fullNameRegex, string);
+    return validateWithRegex(fullNameRegex, fullNameValue);
   }
 
   function validateEmail(email) {
     var emailRegex = /^"?(\b[\w\+.\-0-9\"]+@[\[?\w\.-]+\.\w{2,10}\]?){1,50}$/i; 
-    return validateWithRegex(emailRegex, string);
+    return validateWithRegex(emailRegex, email);
   }
 
   function validateAlphaNumeric(string) {
     var alphaNumericRegex = /^[\w\s]{1,50}$/;
     return validateWithRegex(alphaNumericRegex, string);
   }
+
+  function validateNumeric(string) {
+    var alphaNumericRegex = /^[0-9\s]{1,50}$/;
+    return validateWithRegex(alphaNumericRegex, string);
+  }
+
+  function validateAlphabetic(string) {
+    var alphaNumericRegex = /^[A-Za-z\s]{1,50}$/;
+    return validateWithRegex(alphaNumericRegex, string);
+  }
  
   function validateZipCode(zip) {
     var zipRegex = /^\d{5}(?:[-\s]\d{4})?$/;
     return validateWithRegex(zipRegex, zip);
+  }
+
+  function validateCreditCardExpirationDate(date) {
+    var creditCardExpirationDateRegex = /^([0]?[1-9]{1}|1[0-2]{1})[\/]{1}([1-9][0-9])$/;
+    return validateWithRegex(creditCardExpirationDateRegex, date);
   }
 
   function validateWithRegex(regex, value) {
@@ -83,7 +115,10 @@ validation_manager = (function() {
     
 //ERRORS
   function hideErrors(field) {
-    field.nextSibling.style.visibility = "hidden";
+    var errorElementId = generateErrorElementId(field);
+    if (document.getElementById(errorElementId)) {
+      field.nextSibling.style.visibility = "hidden";
+    }
   } 
 
   function showErrors(field) {

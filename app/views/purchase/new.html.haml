@@ -20,21 +20,19 @@
     %input#state{:type => "text", data: {validator: "state"}}
   %div
     %label{:for => "msg"} Zip Code:
-    %input#zip
+    %input#zip{:type => "text", data: {validator: "zip_code"}}
   %div
     %label{:for => "msg"} Apartment:
-    %input#apt
-
+    %input#apt{:type => "text", data: {validator: "apartment"}}
   %div
     %label{:for => "msg"} Card Number:
-    %input#cardNum
+    %input#cardNum{:type => "text", data: {validator: "credit_card_number"}}
   %div
     %label{:for => "msg"} CVC:
-    %input#cvc
+    %input#cvc{:type => "text", data: {validator: "credit_card_cvc"}}
   %div
     %label{:for => "msg"} Expiration Date:
-    %input#exp
-
+    %input#exp{:type => "text", data: {validator: "credit_card_expiration_date"}}
   %div
     %input#stripe-token{type: "hidden", name: "stripeToken"}
   %button{:type => "submit"} Submit Payment
