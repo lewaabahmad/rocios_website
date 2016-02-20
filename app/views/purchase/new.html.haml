@@ -1,23 +1,23 @@
-%form#payment-form{:action => "/purchase", :method => "post"}
+%form#payment-form.validaterenater-form{:action => "/purchase", :method => "post"}
   = tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
   %div
     %label{:for => "name"} Name:
-    %input#name{:type => "text"}
+    %input#name{type: "text", data: {validator: "full_name"}}
   %div
     %label{:for => "mail"} E-mail:
-    %input#mail{:type => "email"}
+    %input#mail{:type => "email", data: {validator: "email"}}
   %div
     %label{:for => "msg"} Street Address Line 1:
-    %input#addOne
+    %input#addOne{:type => "text", data: {validator: "street address"}}
   %div
     %label{:for => "msg"} Street Address Line 2:
-    %input#addTwo
+    %input#addTwo{:type => "text"}
   %div
     %label{:for => "msg"} City:
-    %input#city
+    %input#city{:type => "text", data: {validator: "city"}}
   %div
     %label{:for => "msg"} State:
-    %input#state
+    %input#state{:type => "text", data: {validator: "state"}}
   %div
     %label{:for => "msg"} Zip Code:
     %input#zip
@@ -35,4 +35,6 @@
     %label{:for => "msg"} Expiration Date:
     %input#exp
 
+  %div
+    %input#stripe-token{type: "hidden", name: "stripeToken"}
   %button{:type => "submit"} Submit Payment

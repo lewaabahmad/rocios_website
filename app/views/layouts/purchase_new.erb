@@ -13,7 +13,7 @@
   <script>
     document.addEventListener("DOMContentLoaded", function(event) {
       function stripeResponseHandler(status, response) {
-      debugger
+      	debugger
         console.log("inside stripeResponseHandler")
        // var $form = $('#payment-form');
 
@@ -34,29 +34,33 @@
 //        debugger
 
       function fetchCardInformation(form) {
-        var cartObject = {  cardNum: form.querySelector("#cardNum").value,
+	var exp = form.querySelector("#exp").value.split("/");
+	var expMonth = exp[0] || 0;
+	var expYear = exp[1] || 0;
+        var cardObject = {  cardNum: form.querySelector("#cardNum").value,
                             cvc: form.querySelector("#cvc").value,
-                            exp: form.querySelector("#exp").value
+                            exp_month: expMonth,
+			    exp_year: expYear
                          };
-        return cartObject;
+        return cardObject;
       }
 
       function isValidCartObject(cartObject) {
-        debugger
+        return true;
+	//until actual validations work 
       }
 
       document.getElementById("payment-form").addEventListener("submit", function(event) {
         var form = this;
         var button = form.querySelector("button");
         button.disabled = true;
-        var cartObject = fetchCardInformation(form);
+        var cardObject = fetchCardInformation(form);
 
-        if (isValidCartObject(cartObject)) {
-          Stripe.card.createToken(cartObject, stripeResponseHandler)
+        if (isValidCartObject(cardObject)) {
+          Stripe.card.createToken(cardObject, stripeResponseHandler)
         } else {
           alert("No.")
         }
-
         return false;
       });
     })
