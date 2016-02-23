@@ -6,13 +6,26 @@ class PurchaseController < ApplicationController
   end
 
   def create
-    purchase_params
-    #Purchase.create(params[:purchase])
+    Purchase.create(creation_params)
+    render "thank_you"
   end
 
   private
-  def purchase_params
+  def creation_params
+    pp = purchase_params
     binding.pry
-    params.require(:purchase).permit()
+    {  purchaser: pp["name"],
+       state: pp["state"],
+       city: pp["city"],
+       address_line_1: pp["address_line_one"],
+       address_line_2: pp["address_line_two"],
+       apartment: pp["apartment"],
+       zip_code: pp["zip_code"]
+       #art_id:
+    }
+  end
+
+  def purchase_params
+    params.require(:purchase).permit(:name, :email, :address_line_one, :address_line_two, :city, :state, :zip_code, :apartment, :stripeToken)
   end 
 end
