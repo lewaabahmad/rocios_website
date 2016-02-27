@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/contact', to: 'static_pages#contact'
   get '/purchase/new', to: 'purchase#new'
   post '/purchase', to: 'purchase#create'
+  get '/thank_you', to: 'static_pages#thank_you'
 
 # POST       /admin/posts(.:format)                    admin/posts#create
 end
