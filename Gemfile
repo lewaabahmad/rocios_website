@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'pry'
 gem 'pry-nav'
 gem 'haml'
+gem 'stripe'
 
 gem 'rails', '4.2.0'
 gem 'pg'

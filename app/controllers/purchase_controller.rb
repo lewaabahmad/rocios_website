@@ -1,11 +1,7 @@
 class PurchaseController < ApplicationController
 
-  def new
-    @purchase = Purchase.new
-    render layout: "purchase_new"
-  end
-
   def create
+binding.pry
     Purchase.create(creation_params)
     render "thank_you"
   end

@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(event) {
   function stripeResponseHandler(status, response) {
     var $form = $('#payment-form');
+    addCartItemsToForm($form);
     if (response.error) {
       // Show the errors on the form
       $form.find('.payment-errors').text(response.error.message);
@@ -10,10 +11,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
       var token = response.id;
       // Insert the token into the form so it gets submitted to the server
       $form.append($('<input type="hidden" name="stripeToken" />').val(token));
+      // Add cart items to form
       // and submit
       $form.get(0).submit();
     }
   };
+
+  function addCartItemsToForm($form) {
+    $form.append($('<input type="hidden" name="purchase[selectedArt]" />').val(Rocio.cart.get()));
+    $form.append($('<input type="hidden" name="purchase[totalCost]" />').val(Rocio.cart.totalCost()));
+  }
 
   function fetchCardInformation(form) {
     var exp = form.querySelector("#exp").value.split("/");
