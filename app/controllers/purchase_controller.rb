@@ -2,7 +2,20 @@ class PurchaseController < ApplicationController
 
   def create
     binding.pry
-    #Purchase.create(creation_params)
+    total_cost = get_total_cost
+    begin
+      charge = Stripe::Charge.create(
+        :amount => total_cost, # amount in cents, again
+        :currency => "usd",
+        :source => stripe_token,
+        :description => "Art Sale!!!"
+      )
+    rescue Stripe::CardError => e
+      # The card has been declined
+      redirect_to "/card_error"
+    end
+    # Charge made
+    Purchase.create(creation_params)
     redirect_to "/thank_you"
   end
 
@@ -28,4 +41,8 @@ class PurchaseController < ApplicationController
   def purchase_params
     params.require(:purchase).permit(:name, :email, :address_line_one, :address_line_two, :city, :state, :zip_code, :apartment, :selectedArt, :totalCost, :stripeToken)
   end 
+
+  def get_total_cost
+    
+  end
 end
