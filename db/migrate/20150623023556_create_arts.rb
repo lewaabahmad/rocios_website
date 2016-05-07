@@ -6,7 +6,7 @@ class CreateArts < ActiveRecord::Migration
       t.string :description
       t.boolean :limited
       t.integer :quantity
-      t.decimal :price, :precision => 8, :scale => 2, :default => 0
+      t.integer :price
       t.string :image_url
 
       t.timestamps null: false

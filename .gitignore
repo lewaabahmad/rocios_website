@@ -21,3 +21,6 @@
 /to-do.txt
 
 .swp
+
+# Ignore application configuration
+/config/application.yml

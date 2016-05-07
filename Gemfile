@@ -4,6 +4,7 @@ gem 'pry'
 gem 'pry-nav'
 gem 'haml'
 gem 'stripe'
+gem 'figaro'
 
 gem 'rails', '4.2.0'
 gem 'pg'
