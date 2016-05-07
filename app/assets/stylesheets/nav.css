@@ -1,13 +1,5 @@
-nav {
-  text-align:center;
-      padding: 75px 0 40px 0px;
-    border-bottom: 5px solid pink;
-}
-nav ul {
-  margin: 0 auto;
-  padding: 0;
-  width: 516px;
-}
+
+
 nav li {
   display: inline-block;
   list-style: none;
