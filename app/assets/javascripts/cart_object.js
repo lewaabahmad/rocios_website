@@ -77,10 +77,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
   //CART MAINTENANCE 
       sanitizeCart: function() {
         var cart = this.get();
+        var cartLength = cart.length
+        var cartPiece;
         var artTitles = this.getArtTitles();
-        for (var cartPiece in cart) {
+        for (var i = 0; i < cartLength; i++){
+          cartPiece = cart[i];
           if (artTitles.indexOf(cartPiece) === -1) {
-            cart = cart.splice(cart.indexOf(cartPiece) , 1);
+            console.log(cartPiece);
+            console.log(artTitles);
+            cart.splice(i, 1);
           }
         }
         this.set(cart);
