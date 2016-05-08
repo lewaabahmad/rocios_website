@@ -1,6 +1,8 @@
 class ArtController < ApplicationController
   def index
     @art = Art.all
+    @types = ProductType.all
+    @series = ProductSeries.all
   end
 
   def new

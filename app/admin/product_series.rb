@@ -1,3 +1,3 @@
-ActiveAdmin.register Post do
+ActiveAdmin.register ProductSeries do
   permit_params :title, :tagline, :body
 end

@@ -1,0 +1,24 @@
+#art-index-filtering
+  %button.btn.btn-default#filter-reset-button Reset
+  .dropdown#product-series-dropdown
+    %button.btn.btn-default.dropdown-toggle{"aria-expanded" => "true", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+      Series
+      %span.caret
+    %ul.dropdown-menu{"aria-labelledby" => "Series"}
+      - @series.each do |s|
+        %li
+          %a{data: {"series": s.title}} 
+            = s.title
+  .dropdown#product-type-dropdown
+    %button.btn.btn-default.dropdown-toggle{"aria-expanded" => "true", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+      Type
+      %span.caret
+    %ul.dropdown-menu{"aria-labelledby" => "Type"}
+      - @types.each do |type|
+        %li
+          %a{data: {"type": type.title}} 
+            = type.title
+      / %li.divider{:role => "separator"}
+  %h4
+    Filter:
+.clear-div

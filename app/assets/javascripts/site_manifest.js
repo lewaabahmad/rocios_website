@@ -4,5 +4,6 @@
 //= require art_data
 //= require cart_object 
 //= require stars
-//= require purchase_stripe_manager.js 
-//= require purchase_validation_manager.js 
+//= require art_index_filtering
+//= require purchase_stripe_manager
+//= require purchase_validation_manager

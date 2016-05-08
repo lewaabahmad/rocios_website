@@ -38,18 +38,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
     return validation_manager.isValid();
   }
 
-  document.getElementById("payment-form").addEventListener("submit", function(event) {
-    event.preventDefault();
-    var form = this;
-    var button = form.querySelector("button");
-    //button.disabled = true;
-    var cardObject = fetchCardInformation(form);
+  var paymentForm = document.getElementById("payment-form");
+  if (paymentForm) {
+    paymentForm.addEventListener("submit", function(event) {
+      event.preventDefault();
+      var form = this;
+      var button = form.querySelector("button");
+      //button.disabled = true;
+      var cardObject = fetchCardInformation(form);
 
-    if (isValidCartObject()) {
-      Stripe.card.createToken(cardObject, stripeResponseHandler)
-    } else {
-      alert("No.")
-    }
-    return false;
-  });
+      if (isValidCartObject()) {
+        Stripe.card.createToken(cardObject, stripeResponseHandler)
+      } else {
+        alert("No.")
+      }
+      return false;
+    });
+  }
 })
