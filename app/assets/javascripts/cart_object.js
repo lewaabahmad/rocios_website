@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         if (localStorage.getItem('cart') === null) {
           localStorage.setItem('cart', JSON.stringify([]));
         }
+        this.sanitizeCart();
         //update the cart icon
         this.updateCartIcon();
         //add add to cart event listeners
