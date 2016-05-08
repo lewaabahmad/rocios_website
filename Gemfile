@@ -11,7 +11,7 @@ gem 'pg'
 gem 'devise'
 gem 'activeadmin', '~> 1.0.0.pre1'
 gem 'sass-rails', '5.0.3'
-#gem "meta_search", '>= 1.1.0.pre'
+gem 'rails_12factor'
 gem 'uglifier', '2.7.1'
 gem 'coffee-rails', '4.1.0'
 
