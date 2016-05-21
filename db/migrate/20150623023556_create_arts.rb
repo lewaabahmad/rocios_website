@@ -1,7 +1,7 @@
 class CreateArts < ActiveRecord::Migration
   def change
     create_table :arts do |t|
-      t.string :title
+      t.string :title, :unique => true
       t.string :tagline
       t.string :description
       t.boolean :limited

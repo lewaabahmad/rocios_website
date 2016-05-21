@@ -16,3 +16,5 @@ i = 1
                 image_url: "http://41.media.tumblr.com/fe6ce46189ca624640604546b8f79f27/tumblr_mws5s4jvP21t25zvpo1_1280.png"  });
   i += 1
 end
+
+AdminUser.create!(:email => 'admin@example.com', :password => 'password', :password_confirmation => 'password')

@@ -1,0 +1,22 @@
+<% Theme.all.each do |theme| %>
+  .<%= theme.title %> {
+    background-color: <%= theme.primary_color %>;
+
+    .theme-image-container {
+      background-image: url(<%= theme.background_image %>);
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      height: 650px;
+      margin-top: 150px;
+      width: 100%;
+    }
+    .primary-color {
+      color: <%= theme.primary_color %>;
+    }
+    .secondary-color {
+      color: <%= theme.secondary_color %>;
+      font-color: <%= theme.secondary_color %>;
+    }
+  }
+<% end %>

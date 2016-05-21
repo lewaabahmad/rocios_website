@@ -2,17 +2,19 @@
 #art-container
   - @art.each.with_index do |piece, i|
     .art-piece.col-sm-4.col-xs-6.col-lg-3{data: {series: "#{piece.product_series.title if piece.product_series}", type: "#{piece.product_type.title if piece.product_type}"}}
-      .art-image-container
-        %img{src: piece.image_url}
-      .art-copy-container
-        %h3.clear-div
-          = piece.title
-        .art-copy-bottom-corner
-          - if piece.limited
-            %h5.limited
-              limited
-          %h5.cost
-            = piece.price
-          .actions{"data-title" => piece.title}
-            %button.btn.btn-success.add-to-cart.btn-xs
-              Add to Cart
+      .art-piece-container
+        .art-image-container
+          %img{src: piece.image_url}
+        .art-copy-container
+          %h3.clear-div
+            = piece.title
+          .art-copy-bottom-corner
+            - if piece.limited
+              %h5.limited
+                limited
+            %h5.cost
+              = piece.price
+            .actions{"data-title" => piece.title}
+              %button.btn.btn-success.add-to-cart.btn-xs
+                Add to Cart
+          .clear-div
